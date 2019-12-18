@@ -91,23 +91,23 @@ getQuotes()
          else if (e.target.className == "btn-success") {
              //console.log(e.target)
              //debugger 
-             e.target.childNodes[1].innerText++ + 1
+             //e.target.childNodes[1].innerText++ + 1
         //or      e.target.childNodes[1].innerText = parseInt(e.target.childNodes[1].innerText) + 1
 
-        //     fetch('http://localhost:3000/likes', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //         },
-        //     body: ({ quoteId: `${e.target.dataset.quoteId}`})          
-        //     })
-        //     .then(function(response) {
-        //     return response.json();
-        //     })
-        //     .then(function(data) {
-        //         console.log(data)
-        // })
+            fetch('http://localhost:3000/likes', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+          body: JSON.stringify ({ quoteId: parseInt(`${e.target.dataset.quoteId}`), createdAt: 12345})
+         })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function() {
+                e.target.childNodes[1].innerText++ + 1
+            })
             }
         })
         
