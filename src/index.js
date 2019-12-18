@@ -2,15 +2,17 @@
 // only runs after the DOM has finshed loading. 
 
 //fetch from 'http://localhost:3000/quotes?_embed=likes'
-//for each, √
-//create li with specific structure √
-//append li to container √
+//create ul with specific structure √
+//append ul to container √
+//print all quotes √
 
 //add event listener to submit √
 //create post request √
 //append to container √
 
-//add event listener to click for delete √
+//add event listener to click for delete and likes √
+//assign data-id
+//find parent node
 //delete request on target √
 //remove from dom √
 
@@ -77,12 +79,9 @@ getQuotes()
         
     })
 
-
-    //click event delegation
     document.addEventListener("click", function(e) {
-       let span = document.getElementsByTagName('span')[0]
-
-       if (e.target.innerText === "Delete") {
+       //let span = document.getElementsByTagName('span')[0]
+        if (e.target.innerText === "Delete") {
             e.target.parentNode.parentNode.remove()
             //debugger
             fetch(`http://localhost:3000/quotes/${e.target.dataset.quoteId}`, {
@@ -90,10 +89,10 @@ getQuotes()
             })
         }
          else if (e.target.className == "btn-success") {
-             console.log(e.target)
+             //console.log(e.target)
              //debugger 
              e.target.childNodes[1].innerText++ + 1
-            //e.target.childNodes[1].innerText = parseInt(e.target.childNodes[1].innerText) + 1
+        //or      e.target.childNodes[1].innerText = parseInt(e.target.childNodes[1].innerText) + 1
 
         //     fetch('http://localhost:3000/likes', {
         //     method: 'POST',
@@ -109,14 +108,7 @@ getQuotes()
         //     .then(function(data) {
         //         console.log(data)
         // })
-         }
-
-         
+            }
         })
         
-        
-        
-    
 })
-    //e.target.dataset.quoteId is the id of that quote
-    //span for specific like button = e.target.childNode[1]
